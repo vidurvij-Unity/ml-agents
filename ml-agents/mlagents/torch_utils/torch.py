@@ -9,6 +9,8 @@ try:
 
     os.environ["OMP_NUM_THREADS"] = "1"
 
+    torch.set_num_threads(1)
+
     # Known PyLint compatibility with PyTorch https://github.com/pytorch/pytorch/issues/701
     # pylint: disable=E1101
     if torch.cuda.is_available():
