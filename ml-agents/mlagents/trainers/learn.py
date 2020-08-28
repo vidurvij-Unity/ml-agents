@@ -21,7 +21,7 @@ from mlagents.trainers.stats import (
 )
 from mlagents.trainers.cli_utils import parser, DetectDefault
 from mlagents_envs.environment import UnityEnvironment
-from mlagents.trainers.settings import RunOptions, FrameworkType
+from mlagents.trainers.settings import RunOptions
 
 from mlagents.trainers.training_status import GlobalTrainingStatus
 from mlagents_envs.base_env import BaseEnv
@@ -123,13 +123,6 @@ def run_training(run_seed: int, options: RunOptions) -> None:
         env_parameter_manager = EnvironmentParameterManager(
             options.environment_parameters, run_seed, restore=checkpoint_settings.resume
         )
-
-        force_torch = "torch" in DetectDefault.non_default_args
-        if force_torch or any(
-            behavior.framework == FrameworkType.TENSORFLOW
-            for behavior in options.behaviors.values()
-        ):
-            os.environ["OMP_NUM_THREADS"] = "1"
 
         trainer_factory = TrainerFactory(
             trainer_config=options.behaviors,
