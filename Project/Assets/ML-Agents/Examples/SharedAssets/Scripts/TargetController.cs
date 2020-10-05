@@ -12,7 +12,6 @@ namespace Unity.MLAgentsExamples
     /// </summary>
     public class TargetController : MonoBehaviour
     {
-
         [Header("Collider Tag To Detect")]
         public string tagToDetect = "agent"; //collider tag to detect 
 
@@ -85,10 +84,15 @@ namespace Unity.MLAgentsExamples
             if (col.transform.CompareTag(tagToDetect))
             {
                 onCollisionEnterEvent.Invoke(col);
+                GetComponentInParent<DataRecorder>().EpisodeEnd(true);
+                GameObject runner = GetComponentInParent<WalkerAgent>().runner;
+                runner.GetComponent<ProjectSettingsOverrides>().AdjustSettings();
                 if (respawnIfTouched)
                 {
                     MoveTargetToRandomPosition();
                 }
+
+                
             }
         }
 

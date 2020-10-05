@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 
 public class WalkerAgent : Agent
 {
+    public GameObject runner;
     [Header("Walk Speed")]
     [Range(0.1f, 10)]
     [SerializeField]

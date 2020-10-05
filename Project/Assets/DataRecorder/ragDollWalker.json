@@ -1,0 +1,5 @@
+{"epoch_no":0,"success":4,"faliure":0,"totalEpisodes":4,"currentTimestep":0.019999999552965165}
+{"epoch_no":1,"success":0,"faliure":3,"totalEpisodes":7,"currentTimestep":0.11332999914884567}
+{"epoch_no":2,"success":0,"faliure":3,"totalEpisodes":10,"currentTimestep":0.2133300006389618}
+{"epoch_no":3,"success":0,"faliure":3,"totalEpisodes":13,"currentTimestep":0.3133299946784973}
+{"epoch_no":4,"success":0,"faliure":3,"totalEpisodes":16,"currentTimestep":0.41332998871803286}

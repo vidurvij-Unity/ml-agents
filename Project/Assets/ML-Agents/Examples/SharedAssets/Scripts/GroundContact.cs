@@ -12,7 +12,6 @@ namespace Unity.MLAgentsExamples
     public class GroundContact : MonoBehaviour
     {
         [HideInInspector] public Agent agent;
-
         [Header("Ground Check")] public bool agentDoneOnGroundContact; // Whether to reset agent on ground contact.
         public bool penalizeGroundContact; // Whether to penalize on contact.
         public float groundContactPenalty; // Penalty amount (ex: -1).
@@ -34,6 +33,9 @@ namespace Unity.MLAgentsExamples
 
                 if (agentDoneOnGroundContact)
                 {
+                    GetComponentInParent<DataRecorder>().EpisodeEnd(false);
+                    GameObject runner = GetComponentInParent<WalkerAgent>().runner;
+                    runner.GetComponent<ProjectSettingsOverrides>().AdjustSettings();
                     agent.EndEpisode();
                 }
             }
